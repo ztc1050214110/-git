@@ -129,7 +129,7 @@ import { connect } from 'wepy-redux';
 export default class XXXXX extends wepy.component {
   //对应 app.json 文件
   config = {
-    navigationBarTitleText: '功能异常'
+    navigationBarTitleText: '第一次'
   };
   // 声明页面中将要使用到的组件
   components = {};
