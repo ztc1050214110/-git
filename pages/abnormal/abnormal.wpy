@@ -3,7 +3,7 @@
     width: 98%;
     height: 240rpx;
     float: right;
-    border-bottom: 1px solid #ededed;
+    border方法方法付付付付-bottom: 1px solid #ededed;
     color:#000;
    padding-top:20rpx;
 
@@ -11,7 +11,7 @@
     position: relative;
 }
 .issueL231123ist2{
-    // width: 98%;
+    // wi方法方法付付dth: 98%;
     height: 240rpx;
     // float: right;
     border-bottom: 1px solid #ededed;
@@ -40,7 +40,7 @@
 .screenshot>span{
      color: #aeaeae;
      font-size: 26rpx;
-    //  margin-left: 54.8%;
+    //  marg 方法方法付付付付付付in-left: 54.8%;
      line-height: 86rpx;
 }
 .addIMG{
