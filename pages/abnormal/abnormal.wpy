@@ -4,6 +4,8 @@
     height: 240rpx;
     flo1111111111at: right;
     border-bottom: 1px solid #ededed;
+    float: right;
+    border方法方法付付付付-bottom: 1px solid #ededed;
     color:#000;
    padding-top:20rpx;
 
@@ -11,7 +13,7 @@
     position: relative;
 }
 .issueL231123ist2{
-    // width: 98%;
+    // wi方法方法付付dth: 98%;
     height: 240rpx;
     // float: right;
     border-bottom: 1px solid #ededed;
@@ -40,7 +42,7 @@
 .screenshot>span{
      color: #aeaeae;
      font-size: 26rpx;
-    // 111111111111111111 margin-left: 54.8%;
+    //  marg 方法方法付付付付付付in-left: 54.8%;
      line-height: 86rpx;
 }
 .addIMG{
@@ -64,7 +66,7 @@ margin-left:30rpx;
     font-size: 26rpx;
 }.contact{
     width: 100%;
-    height:11111111111 86rpx;
+    height:11111111111git 86rpx;
      line-height: 86rpx;
       border-bottom: 1px solid #e0e0e0;
        box-sizing: border-box;
