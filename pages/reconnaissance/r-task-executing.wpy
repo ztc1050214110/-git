@@ -1,0 +1,184 @@
+<style lang="less">
+.mt100 {
+  margin-top: 100rpx;
+}
+
+.btn {
+  background-color: #00706a !important;
+  color: #ffffff !important;
+  margin-right: 90rpx !important;
+  margin-left: 90rpx !important;
+  height: 72rpx !important;
+  line-height: 72rpx !important;
+}
+</style>
+<template>
+  <view>
+    <i-steps current="{{step}}">
+      <i-step>
+        <view slot="title">
+          接单
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          到达
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          勘察中
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          勘察完成
+        </view>
+      </i-step>
+    </i-steps>
+
+    <view class="caption-wrap">
+      <taskinfo :showSwitch.sync="showSwitch"></taskinfo>
+
+      <sginin
+        @onSginIn.user="onSginIn"
+        wx:if="{{step == 1}}"
+      ></sginin>
+
+      <reconnaissance wx:if="{{step == 2 }}"></reconnaissance>
+      <success
+        wx:if="{{step == 3 }}"
+        :head1="head1"
+        :head2="head2"
+      ></success>
+
+      <!-- 占位 -->
+      <block wx:if="{{step != 1}}">
+        <view
+          style="height:100rpx;"
+          wx:if="{{step != 3 }}"
+        />
+        <i-button
+          bind:click="handleClick"
+          i-class="btn"
+          type="default"
+          loading="{{loading}}"
+        >{{btnName}}</i-button>
+        <!-- 占位 -->
+        <view style="height:40rpx;" />
+      </block>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import taskinfo from './components/r-task-info';
+import sginin from '../components/sgin-in';
+import success from '../components/success';
+import reconnaissance from './components/reconnaissance';
+
+let self;
+export default class RTaskDetail extends wepy.page {
+  config = {
+    navigationBarTitleText: '勘察',
+    usingComponents: {
+      'i-steps': '../../iview/steps/index',
+      'i-step': '../../iview/step/index',
+      'i-collapse': '../../iview/collapse-sd/index',
+      'i-collapse-item': '../../iview/collapse-item-sd/index',
+      'i-button': '../../iview/button/index',
+      'i-panel': '../../iview/panel/index',
+      'i-grid': '../../iview/grid/index',
+      'i-grid-item': '../../iview/grid-item/index',
+      'i-switch': '../../iview/switch/index',
+      'i-action-sheet': '../../iview/action-sheet/index',
+      'i-drawer': '../../iview/drawer/index',
+      'i-checkbox-group': '../../iview/checkbox-group/index',
+      'i-checkbox': '../../iview/checkbox/index',
+      'i-swipeout': '../../iview/swipeout/index'
+    }
+  };
+  components = {
+    taskinfo: taskinfo,
+    sginin: sginin,
+    success: success,
+    reconnaissance: reconnaissance
+  };
+  mixins = [];
+  data = {
+    step: 0,
+    loading: false,
+    showSwitch: false,
+    head1: '操作成功',
+    head2: '勘察任务已完成，故障处理中'
+  };
+  computed = {
+    btnName() {
+      switch (parseInt(this.step)) {
+        case 0:
+          return '接单';
+        case 1:
+          return '';
+        case 2:
+          return '提交勘察';
+        case 3:
+          return '确定';
+        default:
+          return '接单';
+      }
+    }
+  };
+  methods = {
+    onSginIn() {
+      this.step = 2;
+      self.showSwitch = true;
+      let collapse = self.$wxpage.selectComponent('#i-collapse');
+      if (collapse) {
+        collapse.collapseAll();
+      }
+    },
+    collapseAll() {
+      let collapse = self.$wxpage.selectComponent('#i-collapse');
+      if (collapse) {
+        collapse.collapseAll();
+      }
+    },
+    handleClick() {
+      if (!self.loading) {
+        self.loading = true;
+        switch (parseInt(self.step)) {
+          case 0:
+            setTimeout(function() {
+              self.loading = false;
+              self.step = 1;
+              self.methods.collapseAll();
+              self.$apply();
+            }, 500);
+            break;
+          case 1:
+            break;
+          case 2:
+            setTimeout(function() {
+              self.loading = false;
+              self.methods.collapseAll();
+              self.step = 3;
+              self.$apply();
+            }, 500);
+            break;
+          case 3:
+            wx.navigateBack();
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  };
+  onLoad(options) {
+    self = this;
+    if (options.step) {
+      self.step = options.step;
+    }
+  }
+}
+</script>

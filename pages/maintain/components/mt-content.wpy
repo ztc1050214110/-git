@@ -1,0 +1,65 @@
+<style lang="less">
+</style>
+<template>
+    <view>
+        <i-tabs
+            current="{{ breakdownCurrent }}"
+            bindchange="tabChange"
+            color="#00706B"
+        >
+            <i-tab
+                key="b1"
+                title="故障#1"
+            ></i-tab>
+            <i-tab
+                key="b2"
+                title="故障#2"
+            ></i-tab>
+            <i-tab
+                key="b3"
+                title="故障#3"
+            ></i-tab>
+            <i-tab
+                key="b4"
+                title="故障#4"
+            ></i-tab>
+            <i-tab
+                key="b5"
+                title="故障#5"
+            ></i-tab>
+        </i-tabs>
+        <breakdowninfo></breakdowninfo>
+        <maintainform wx:if="{{showMaintain}}"></maintainform>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+import breakdowninfo from './breakdown-info';
+import maintainform from './maintain-form';
+
+export default class TiContent extends wepy.component {
+  config = {};
+  components = {
+    breakdowninfo: breakdowninfo,
+    maintainform: maintainform
+  };
+  mixins = [];
+  data = {
+    switch1: false,
+    breakdownCurrent: 'b1'
+  };
+  props = {
+    showMaintain: Boolean
+  };
+  computed = {};
+  methods = {
+    tabChange(event) {
+      this.breakdownCurrent = event.detail.key;
+    },
+    onChange(event) {
+      const detail = event.detail;
+      this.switch1 = detail.value;
+    }
+  };
+}
+</script>

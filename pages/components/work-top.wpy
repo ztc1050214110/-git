@@ -1,0 +1,156 @@
+<style lang="less">
+swiper {
+  height: 268rpx;
+  width: 100%;
+}
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+.list {
+  width: 100%;
+  height: 180rpx;
+  display: flex;
+  justify-content: space-around;
+  // margin-bottom: 90rpx;
+  // margin-top: 50rpx;
+  box-sizing: border-box;
+  padding-top: 30rpx;
+}
+.listBox {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.listTxt {
+  font-size: 20rpx;
+  margin-top: 16rpx;
+}
+.listImg {
+  // width: 104rpx;
+  // height: 104rpx;
+}
+.Hei {
+  width: 100%;
+  height: 46rpx;
+  background-color: #eeeeee;
+}
+
+.menu-icon {
+  height: 80rpx;
+  width: 80rpx;
+}
+</style>
+
+<template>
+  <view class="">
+         <!-- <navigator url="./test" hover-class="navigator-hover">跳转到抢险派单详情</navigator>
+          <navigator url="./task-details/task-details" hover-class="navigator-hover">跳转到任务详情</navigator>
+          <navigator url="./tour-inspection/send-orders" hover-class="navigator-hover">跳转到巡检派单详情</navigator>
+          <navigator url="./polling-ok/polling-ok" hover-class="navigator-hover">跳转到巡检完成</navigator>
+          <navigator url="./Maintain-order/Maintain-order" hover-class="navigator-hover">跳转到维护抢单</navigator>
+          <navigator url="./page-components/page-components" hover-class="navigator-hover">跳转到组件库</navigator>
+          <navigator url="./Polling-centre/Polling-centre" hover-class="navigator-hover">跳转到是否发生故障模块</navigator>
+          <navigator url="./suggest/suggest" hover-class="navigator-hover">跳转到意见和建议</navigator>
+          <navigator url="./About-Us/About-Us" hover-class="navigator-hover">跳转到关于我们</navigator>
+          <navigator url="./abnormal/abnormal" hover-class="navigator-hover">跳转到功能异常</navigator> -->
+    <swiper
+      indicator-dots="true"
+      autoplay="true"
+      circular="true"
+    >
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image
+            src="{{item}}"
+            class="slide-image"
+          />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="list">
+      <view
+        class="listBox"
+        bindtap="go('./tour-inspection/ti-list')"
+      >
+        <image
+          class="menu-icon"
+          src="../../img/xjjjj.png"
+          style="  height: 80rpx;width: 80rpx;"
+        />
+        <view class="listTxt">巡检</view>
+      </view>
+      <view
+        class="listBox"
+        bindtap="go('./maintain/mt-list')"
+      >
+        <image
+          class="menu-icon"
+          src="../../img/wxxxxx.png"
+        />
+        <view class="listTxt">维修</view>
+      </view>
+      <view
+        class="listBox"
+        bindtap="go('./reconnaissance/r-list')"
+      >
+        <image
+          class="menu-icon"
+          src="../../img/kcccc.png"
+        />
+        <view class="listTxt">勘察</view>
+      </view>
+      <view
+        class="listBox"
+        bindtap="go('./event/event-list')"
+      >
+        <image
+          class="menu-icon"
+          src="../../img/sjjjjjjj.png"
+        />
+        <view class="listTxt">事件</view>
+      </view>
+    </view>
+
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Top extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '开发模板'
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  //   mixins = [testMixin];
+  // 数据
+  data = {
+    imgUrls: [
+      'https://hi-prms.hld-yun.com/xjimg/b1.jpg',
+      'https://hi-prms.hld-yun.com/xjimg/b2.jpg',
+      'https://hi-prms.hld-yun.com/xjimg/b32.jpg',
+      'https://hi-prms.hld-yun.com/xjimg/b4.jpg'
+    ]
+  };
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {
+    go(path) {
+      wepy.navigateTo({
+        url: path
+      });
+    }
+  };
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

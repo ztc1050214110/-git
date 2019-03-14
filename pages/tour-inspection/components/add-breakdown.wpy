@@ -1,0 +1,148 @@
+<style lang="less">
+.messageList {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 50rpx;
+  position: relative;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 25rpx;
+}
+.messagePos {
+  position: absolute;
+  left: 230rpx;
+  top: 0rpx;
+}
+.describe {
+  width: 85%;
+  height: 212rpx;
+  background-color: #eeeeee;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  padding: 20rpx;
+  font-size: 25rpx;
+}
+.addImg {
+  width: 114rpx;
+  height: 114rpx;
+  position: relative;
+  top: 20%;
+  left: 20%;
+}
+.butts {
+  width: 570rpx;
+  height: 74rpx;
+  background-color: #01726b;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 74rpx;
+  color: #fff;
+  margin: auto;
+  margin-bottom: 30rpx;
+  font-size: 22.2rpx;
+}
+.butts2 {
+  width: 560rpx;
+  height: 66rpx;
+  border: 1px solid #01726b;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 65rpx;
+  color: #01726b;
+  margin: auto;
+  margin-bottom: 30rpx;
+  font-size: 64rpx;
+  font-weight: bold;
+  margin-top: 50rpx;
+}
+</style>
+
+<template>
+  <view class="container">
+    <view class="messageList">
+      是否发生故障 :
+      <view class="messagePos">
+        <i-cell-group>
+          <i-cell title="自定义内容">
+            <i-switch
+              value="{{switch1}}"
+              size="large"
+              bind:change="onChange"
+              slot="footer"
+              color="#cccccc"
+              currentColor="#00706B"
+            >
+              <view slot="open">开启</view>
+              <view slot="close">关闭</view>
+            </i-switch>
+          </i-cell>
+        </i-cell-group>
+      </view>
+    </view>
+    <view class="messageList">
+      设备故障 :
+    </view>
+    <view
+      class="messageList"
+      style="border-bottom: 1px solid #fff;"
+    >
+      故障描述 :
+    </view>
+    <view class="describe">
+      <textarea placeholder="请输入你的信息" />
+      </view>
+        <view class="messageList" style="border-bottom: 1px solid #fff;">
+            图片 :
+        </view>
+        <addimage></addimage>
+        <view class="butts2">+</view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import addimage from '../../components/add-image';
+export default class AddBreakDown extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '是否发生故障',
+    usingComponents: {
+      'i-switch': '../../iview/switch/index'
+    }
+  };
+  // 声明页面中将要使用到的组件
+  components = {
+    addimage: addimage
+  };
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {
+    switch1: true
+  };
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {
+    onChange(event) {
+      console.log('点击');
+
+      const detail = event.detail;
+      console.log(detail.value);
+      this.switch1 = detail.value;
+    }
+  };
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

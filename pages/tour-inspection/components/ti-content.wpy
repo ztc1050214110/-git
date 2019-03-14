@@ -1,0 +1,193 @@
+<style lang="less">
+.grid {
+  border: none !important;
+}
+
+.c-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.switch-css {
+  // width: 110rpx !important;
+}
+
+// .sw-cls {
+
+// }
+// .sw-cls-checked {
+
+// }
+</style>
+<template>
+    <view>
+        <view
+            class="messageListLR"
+            style="border-bottom: 1px solid #fff;margin-top: 36rpx;"
+            id="0"
+            @tap="messageListClick"
+        >
+
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    项目
+                </i-grid-item>
+                <i-grid-item
+                    i-class="c-grid-item"
+                    wx:if="{{showSwitch}}"
+                >
+                    是否正常
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <view
+            class="messageListLR2"
+            style="border-bottom: 1px solid #fff;"
+            id="1"
+            @tap="messageListClick"
+        >
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    配电箱
+                </i-grid-item>
+                <i-grid-item
+                    i-class="c-grid-item"
+                    wx:if="{{showSwitch}}"
+                >
+                    <i-switch
+                        i-class="switch-css"
+                        value="{{switch1}}"
+                        size="large"
+                        bind:change="onChange"
+                        slot="footer"
+                        color="#00706B"
+                        currentColor="red"
+                    >
+                        <view slot="open">异常</view>
+                        <view slot="close">正常</view>
+                    </i-switch>
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <view
+            class="messageListLR2"
+            style="border-bottom: 1px solid #fff;"
+            id="2"
+            @tap="messageListClick"
+        >
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    外线
+                </i-grid-item>
+                <i-grid-item
+                    i-class="c-grid-item"
+                    wx:if="{{showSwitch}}"
+                >
+                    <i-switch
+                        i-class="switch-css"
+                        value="{{switch1}}"
+                        size="large"
+                        bind:change="onChange"
+                        slot="footer"
+                        color="#00706B"
+                        currentColor="red"
+                    >
+                        <view slot="open">异常</view>
+                        <view slot="close">正常</view>
+                    </i-switch>
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <view
+            class="messageListLR2"
+            style="border-bottom: 1px solid #fff;"
+            id="3"
+            @tap="messageListClick"
+        >
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    变电站
+                </i-grid-item>
+                <i-grid-item
+                    i-class="c-grid-item"
+                    wx:if="{{showSwitch}}"
+                >
+                    <i-switch
+                        i-class="switch-css"
+                        value="{{switch1}}"
+                        size="large"
+                        bind:change="onChange"
+                        slot="footer"
+                        color="#00706B"
+                        currentColor="red"
+                    >
+                        <view slot="open">异常</view>
+                        <view slot="close">正常</view>
+                    </i-switch>
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <view
+            class="messageListLR2"
+            style="  margin-bottom: 10rpx;"
+            id="4"
+            @tap="messageListClick"
+        >
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    变电站
+                </i-grid-item>
+                <i-grid-item
+                    i-class="c-grid-item"
+                    wx:if="{{showSwitch}}"
+                >
+                    <i-switch
+                        i-class="switch-css"
+                        value="{{switch1}}"
+                        size="large"
+                        bind:change="onChange"
+                        slot="footer"
+                        color="#00706B"
+                        currentColor="red"
+                    >
+                        <view slot="open">异常</view>
+                        <view slot="close">正常</view>
+                    </i-switch>
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <!-- <view
+            class="Xjhei"
+            style="height:30rpx;"
+        ></view> -->
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class TiContent extends wepy.component {
+  config = {};
+  components = {};
+  mixins = [];
+  data = {
+    switch1: false
+  };
+  props = {
+    showSwitch: Boolean
+  };
+  computed = {};
+  methods = {
+    onChange(event) {
+      const detail = event.detail;
+      this.switch1 = detail.value;
+    },
+    messageListClick (e) {
+        console.log("点击了一次")
+        console.log(e)
+    }
+  };
+}
+</script>

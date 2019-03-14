@@ -1,0 +1,83 @@
+<style lang="less">
+</style>
+
+<template>
+  <view class="container">
+    <view class="dynamic">
+      <image
+        src="../../../img/af.png"
+        class="afImg"
+      />
+      <view class="dynamicTxt">巡检内容</view>
+      <image
+        src="../../../img/ssss.png"
+        class="tommImg"
+      />
+
+    </view>
+    <view
+      class="messageListLR"
+      style="border-bottom: 1px solid #fff;margin-top: 36rpx;"
+    >
+      项目
+    </view>
+    <view
+      class="messageListLR2"
+      style="border-bottom: 1px solid #fff;"
+    >
+      配电箱
+    </view>
+    <view
+      class="messageListLR2"
+      style="border-bottom: 1px solid #fff;"
+    >
+      变压器
+    </view>
+    <view
+      class="messageListLR2"
+      style="border-bottom: 1px solid #fff;"
+    >
+      外线
+    </view>
+    <view
+      class="messageListLR2"
+      style="  margin-bottom: 10rpx;"
+    >
+      变电站
+    </view>
+    <view
+      class="Xjhei"
+      style="height:30rpx;"
+    ></view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+// import testMixin from '../mixins/test';
+// import top from '../components/work-top';
+// @connect({})
+// component
+export default class XXXXX extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '开发模板'
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {};
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

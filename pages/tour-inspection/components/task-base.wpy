@@ -1,0 +1,63 @@
+<style lang="less">
+</style>
+<template>
+    <view>
+        <view class="messageList">
+            巡检类型
+            <text class="messagePos">临时巡检/定期巡检</text>
+        </view>
+        <view class="messageList">
+            巡检对象
+            <text class="messagePos">×××用户</text>
+        </view>
+        <view class="messageList">
+            巡检地址
+            <text class="messagePos">×××市×××区</text>
+        </view>
+        <view class="messageList2">
+            巡检事件
+            <text class="messagePos">2019/2/14</text>
+        </view>
+        <!-- <view class="Xjhei"></view> -->
+        <view class="linkman">
+            <view class="linkmanLetf">
+                <image
+                    src="../../../img/lxr.png"
+                    class="linkmanLetfImg"
+                />
+                <view class="linkmanLetfTxt">
+                    <span style="color:#aaaaaa">联系人 :</span> 张三丰
+                </view>
+            </view>
+            <view class="linkmanCentre"></view>
+            <view class="linkmanLetf">
+                <image
+                    src="../../../img/phone.png"
+                    class="linkmanLetfImg"
+                />
+                <view
+                    class="linkmanLetfTxt"
+                    style="width: 360rpx;"
+                >
+                    <span style="color:#aaaaaa">联系电话 :</span> 15231214582
+                </view>
+            </view>
+        </view>
+        <!-- <view
+            class="Xjhei"
+            style="height:40rpx;"
+        ></view> -->
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class TaskBase extends wepy.component {
+  config = {};
+  components = {};
+  mixins = [];
+  data = {};
+  computed = {};
+  methods = {};
+}
+</script>

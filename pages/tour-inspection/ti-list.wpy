@@ -1,0 +1,297 @@
+<style lang="less">
+page {
+  height: 100%;
+  width: 100%;
+}
+
+scroll-view {
+  position: absolute;
+  top: 100rpx;
+  bottom: 100rpx;
+  left: 0;
+  right: 0;
+}
+
+.task-item {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #e1e1e1;
+  width: 100%;
+}
+
+.task-title {
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+}
+
+.task-subtitle {
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  opacity: 0.7;
+}
+
+.task-item-border {
+  border-top: none !important;
+  border-bottom: 31rpx #eeeeee solid !important;
+}
+
+.link-way-bar {
+  height: 60rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 21rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  opacity: 0.9;
+}
+
+.link-way-icon {
+  height: 33rpx;
+  width: 33rpx;
+  margin-right: 16rpx;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.task-content-line {
+  height: 60rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-title {
+  font-size: 25rpx;
+  font-family: MicrosoftYaHei;
+  color: #8b8b8b;
+}
+.content {
+  font-size: 25rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  opacity: 0.7;
+}
+</style>
+<template>
+  <view class="container">
+    <i-tabs
+      current="{{ current_scroll }}"
+      bindchange="tabChange"
+      color="#00706B"
+    >
+      <i-tab
+        key="before-assign"
+        title="未派单"
+      ></i-tab>
+      <i-tab
+        key="take-orders"
+        title="已接单"
+      ></i-tab>
+      <i-tab
+        key="executing"
+        title="执行中"
+      ></i-tab>
+      <i-tab
+        key="complete"
+        title="已完成"
+      ></i-tab>
+      <i-tab
+        key="confirm"
+        title="待确认"
+      ></i-tab>
+      <i-tab
+        key="after-evaluate"
+        title="已评价"
+      ></i-tab>
+    </i-tabs>
+
+    <tabbar
+      :current.sync="tabCurrent"
+      :tab1Name="tab1Name"
+      :tab2Name="tab2Name"
+      @change.user="tabbarChange"
+    />
+
+    <scroll-view scroll-y>
+
+      <i-collapse
+        name="{{name}}"
+        accordion
+      >
+        <i-collapse-item
+          title="XXX工厂巡检任务[定期巡检]"
+          name="{{'name'+index}}"
+          i-class="task-item-border"
+          icon="../../img/factory.png"
+          i-class-title="task-title"
+          i-class-subtitle="task-subtitle"
+          wx:for="{{task}}"
+          i-class-head="task-item"
+          subtitle="深圳市罗湖区"
+          showsub="true"
+        >
+          <view
+            slot="content"
+            @tap="taskClick({{index}})"
+          >
+            <view class="task-content-line">
+              <text class="content-title">巡检对象</text>
+              <text class="content">xxxxx</text>
+            </view>
+            <view class="task-content-line">
+              <text class="content-title">巡检地址</text>
+              <text class="content">xxxxx</text>
+            </view>
+            <view class="task-content-line">
+              <text class="content-title">联系人</text>
+              <text class="content">xxxxx</text>
+            </view>
+            <view class="task-content-line">
+              <text class="content-title">联系电话</text>
+              <text class="content">xxxxx</text>
+            </view>
+            <view class="task-content-line">
+              <text class="content-title">派单时间</text>
+              <text class="content">xxxxx</text>
+            </view>
+          </view>
+          <view
+            slot="sub-content"
+            @tap="taskClick({{index}})"
+          >
+            <view class="link-way-bar">
+              <view class="flex">
+                <image
+                  src="../../img/link_man.png"
+                  class="link-way-icon"
+                  mode="scaleToFill"
+                  lazy-load="false"
+                />
+                <text>联系人：张三丰</text>
+              </view>
+              <view class="flex">
+                <image
+                  src="../../img/phone.png"
+                  class="link-way-icon"
+                  mode="scaleToFill"
+                  lazy-load="false"
+                />
+                <text>联系电话：15212121252</text>
+              </view>
+            </view>
+          </view>
+        </i-collapse-item>
+      </i-collapse>
+      <i-load-more
+        tip="没有更多数据了..."
+        loading="{{ false }}"
+      />
+    </scroll-view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import tabBar from '../components/tab-bar';
+import toast from '../../mixins/toast';
+let self;
+export default class TiList extends wepy.page {
+  config = {
+    navigationBarTitleText: '巡检',
+    enablePullDownRefresh: true,
+    backgroundColor: '#00706a',
+    usingComponents: {
+      'i-tabs': '../../iview/tabs/index',
+      'i-tab': '../../iview/tab/index',
+      'i-tab-bar': '../../iview/tab-bar/index',
+      'i-tab-bar-item': '../../iview/tab-bar-item/index',
+      'i-collapse': '../../iview/collapse/index',
+      'i-collapse-item': '../../iview/collapse-item-sd/index',
+      'i-load-more': '../../iview/load-more/index'
+    }
+  };
+  components = {
+    tabbar: tabBar
+  };
+  mixins = [toast];
+  data = {
+    current_scroll: 'before-assign',
+    current: 'regular',
+    task: [1, 2, 3, 4],
+    tabCurrent: 'tab1',
+    tab1Name: '定期巡检',
+    tab2Name: '临时巡检',
+    name: 'name1'
+  };
+  computed = {};
+  methods = {
+    taskClick(index) {
+      console.log(index);
+      let path;
+      switch (self.current_scroll) {
+        case 'before-assign':
+          path = './send-orders';
+          break;
+        case 'take-orders':
+          path = './ti-task-executing?step=0';
+          break;
+        case 'executing':
+          path = './ti-task-executing?step=2';
+          break;
+        case 'complete':
+          path = '../task-details/task-details?taskType=0';
+          break;
+        case 'confirm':
+          path = '../confirm/confirm?taskType=0';
+          break;
+        case 'after-evaluate':
+          break;
+        default:
+          break;
+      }
+
+      if (path) {
+        self.methods.go(path);
+      }
+    },
+    tabbarChange(id, evt) {
+      self.showToast();
+      self.tabCurrent = id;
+      console.log(evt);
+    },
+    go(path) {
+      wepy.navigateTo({
+        url: path
+      });
+    },
+    tabChange({ detail }) {
+      self.showToast();
+      self.current_scroll = detail.key;
+    },
+    tabBarChange({ detail }) {
+      self.current = detail.key;
+    }
+  };
+
+  onLoad() {
+    self = this;
+  }
+
+  onPullDownRefresh() {
+    setTimeout(function() {
+      wx.stopPullDownRefresh();
+    }, 3000);
+  }
+}
+</script>

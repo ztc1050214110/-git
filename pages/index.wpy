@@ -1,0 +1,210 @@
+<style lang="less">
+body {
+  height: 100%;
+}
+page {
+  height: 100%;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.scan-btn {
+  position: relative;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 60rpx;
+  font-size: 40rpx;
+  text-align: center;
+  line-height: 100rpx;
+  padding: 10rpx;
+  background-color: #ffffff;
+  bottom: 10rpx;
+}
+
+.scan-icon {
+  z-index: 1001;
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 60rpx;
+  line-height: 100rpx;
+}
+
+.tab-bar {
+  box-shadow: 0px 0px 18px 0px rgba(4, 0, 0, 0.2);
+}
+</style>
+<template>
+  <view
+    class="container"
+    style="padding-top:{{navBarHeight}}px"
+  >
+    <navbar
+      :title.sync="title"
+      :showBack="false"
+    />
+    <grabtheorder wx:if="{{current == 'grab_the_order'}}" />
+    <work wx:elif="{{current == 'work'}}" />
+    <report wx:elif="{{current == 'report'}}" />
+    <mine wx:elif="{{current == 'mine'}}" />
+    <i-tab-bar
+      fixed
+      current="{{ current }}"
+      color="#00706a"
+      bindchange="handleChange"
+      i-class="tab-bar"
+    >
+      <i-tab-bar-item
+        key="grab_the_order"
+        img="../../img/gsav.png"
+        current-img="../../img/gsa.png"
+        title="抢单"
+      ></i-tab-bar-item>
+      <i-tab-bar-item
+        key="work"
+        img="../../img/fsaf.png"
+        current-img="../../img/fsaff.png"
+        title="工作"
+      ></i-tab-bar-item>
+      <!-- 占位 -->
+      <i-tab-bar-item
+        key="zhanw"
+        title=""
+      ></i-tab-bar-item>
+      <i-tab-bar-item
+        key="report"
+        img="../../img/sgfs.png"
+        current-img="../../img/sgfss.png"
+        title="报表"
+      ></i-tab-bar-item>
+      <i-tab-bar-item
+        key="mine"
+        img="../../img/yhyt.png"
+        current-img="../../img/yhytt.png"
+        title="我的"
+      ></i-tab-bar-item>
+    </i-tab-bar>
+    <view
+      class="scan-btn"
+      @tap="scan"
+    >
+      <image
+        src="../img/sy.png"
+        mode="scaleToFill"
+        lazy-load="false"
+        class="scan-icon"
+      />
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import toast from '../mixins/toast';
+import navBar from './components/nav-bar';
+import GrabTheOrder from './components/grab-the-order';
+import mine from './components/mine';
+import report from './components/report';
+import work from './components/work';
+
+let self;
+let app;
+export default class Index extends wepy.page {
+  config = {
+    navigationStyle: 'custom',
+    navigationBarTitleText: '首页',
+    usingComponents: {
+      'i-tab-bar': '../iview/tab-bar/index',
+      'i-tab-bar-item': '../iview/tab-bar-item/index',
+      'i-icon': '../iview/icon/index',
+      'i-grid': '../iview/grid/index',
+      'i-grid-item': '../iview/grid-item/index',
+      'i-grid-icon': '../iview/grid-icon/index',
+      'i-grid-label': '../iview/grid-label/index',
+      'ec-canvas': '../ec-canvas/ec-canvas',
+      'i-collapse': '../iview/collapse-sd/index',
+      'i-collapse-item': '../iview/collapse-item-sd/index',
+      'i-cell-group': '../iview/cell-group/index',
+      'i-cell': '../iview/cell/index',
+      'i-tag': '../iview/tag/index',
+      'i-button': '../iview/button/index',
+      'i-load-more': '../iview/load-more/index'
+    }
+  };
+
+  components = {
+    navbar: navBar,
+    grabtheorder: GrabTheOrder,
+    mine: mine,
+    report: report,
+    work: work
+  };
+
+  mixins = [toast];
+
+  data = {
+    title: '工作',
+    current: 'work',
+    navBarHeight: wx.getSystemInfoSync()['statusBarHeight'] + 50
+  };
+
+  computed = {};
+
+  methods = {
+    scan() {
+      wx.scanCode({
+        onlyFromCamera: true,
+        success(res) {
+          console.log(res);
+          self.methods.go('./scan/scan-detail?info=' + encodeURIComponent(JSON.stringify(res)));
+        }
+      });
+    },
+    go(path) {
+      wepy.navigateTo({
+        url: path
+      });
+    },
+    handleChange({ detail }) {
+      self.current = detail.key;
+      self.showToast();
+      switch (self.current) {
+        case 'grab_the_order':
+          self.title = '抢单';
+          break;
+        case 'work':
+          self.title = '工作';
+          break;
+        case 'report':
+          self.title = '报表';
+          break;
+        case 'mine':
+          self.title = '我的';
+          break;
+      }
+    },
+    toast() {}
+  };
+
+  onLoad() {
+    self = this;
+    app = self.$parent;
+  }
+}
+</script>

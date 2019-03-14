@@ -1,0 +1,49 @@
+<style lang="less">
+.grid-non-border {
+  border-right: none !important;
+  border-bottom: none !important;
+}
+
+.task-list-title {
+  border-left: 20rpx solid #00706a;
+}
+</style>
+<template>
+    <view class="">
+        <top></top>
+        <below></below>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+import top from './work-top';
+import below from './work-below';
+
+export default class Index extends wepy.component {
+  config = {};
+  components = {
+    top: top,
+    below: below
+  };
+  mixins = [];
+  data = {
+    paddingTop: wx.getSystemInfoSync()['statusBarHeight'] + 50,
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 500,
+    imgUrls: [
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551691113946&di=6c108b77008bceabf5f4a68d0b38b78e&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01edb3555ea8100000009af0ba36f5.jpg%401280w_1l_2o_100sh.jpg',
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551691113945&di=0b42e8a992f167b4841b22bfe27d0176&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F19%2F99%2F40%2F99y58PIC9DW_1024.jpg'
+    ]
+  };
+  computed = {};
+  methods = {
+    go(path) {
+      wepy.navigateTo({
+        url: path
+      });
+    }
+  };
+}
+</script>

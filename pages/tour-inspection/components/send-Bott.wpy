@@ -1,0 +1,68 @@
+<style lang="less">
+</style>
+
+<template>
+     <view class="container">
+          <view class="principal">任务负责人</view>
+          <view class="principalBox">
+               <view class="principalBoxS">
+                    <image
+                         src="../../../img/safa.png"
+                         class="principalBoxSImg"
+                    />
+                    <view class="principalBoxSTxt">张三</view>
+               </view>
+          </view>
+          <view class="principal">任务参与人</view>
+          <view class="principalBox">
+               <view class="principalBoxS">
+                    <image
+                         src="../../../img/hdhg.png"
+                         class="principalBoxSImg"
+                    />
+                    <view class="principalBoxSTxt">李四</view>
+               </view>
+               <view class="principalBoxS">
+                    <image
+                         src="../../../img/hdhg.png"
+                         class="principalBoxSImg"
+                    />
+                    <view class="principalBoxSTxt">李小四</view>
+               </view>
+               <view class="principalBoxS">
+                    <image
+                         src="../../../img/hdhg.png"
+                         class="principalBoxSImg"
+                    />
+                    <view class="principalBoxSTxt">李四</view>
+               </view>
+          </view>
+          <view class="butt">
+               立即派单
+          </view>
+     </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class SendBott extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '开发模板'
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {};
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

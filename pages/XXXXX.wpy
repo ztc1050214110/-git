@@ -1,0 +1,38 @@
+<style lang="less">
+</style>
+
+<template>
+  <view class="container">
+    开发模板
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+// import testMixin from '../mixins/test';
+// import top from '../components/work-top';
+// @connect({})
+// page
+export default class XXXXX extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '开发模板'
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {};
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

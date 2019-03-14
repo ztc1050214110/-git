@@ -1,0 +1,50 @@
+<style lang="less">
+</style>
+<template>
+    <view>
+        <titask wx:if="{{taskType == 0}}"></titask>
+        <mttask wx:elif="{{taskType == 1}}"></mttask>
+        <rtask wx:elif="{{taskType == 2}}"></rtask>
+        <userevaluate></userevaluate>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+import userevaluate from './components/user-evaluate';
+import titask from '../tour-inspection/components/ti-task-info';
+import mttask from '../maintain/components/mt-task-info';
+import rtask from '../reconnaissance/components/r-task-info';
+
+export default class EvaluateDetail extends wepy.page {
+  config = {
+    navigationBarTitleText: '用户评价',
+    usingComponents: {
+      'i-switch': '../../iview/switch/index',
+      'i-rate': '../../iview/rate/index',
+      'i-cell-group': '../../iview/cell-group/index',
+      'i-cell': '../../iview/cell/index',
+      'i-collapse': '../../iview/collapse-sd/index',
+      'i-collapse-item': '../../iview/collapse-item-sd/index',
+      'i-steps': '../../iview/steps/index',
+      'i-step': '../../iview/step/index',
+      'i-button': '../../iview/button/index'
+    }
+  };
+  components = {
+    userevaluate: userevaluate,
+    titask: titask,
+    rtask: rtask,
+    mttask: mttask
+  };
+  mixins = [];
+  data = {
+    taskType: -1
+  };
+  computed = {};
+  methods = {};
+
+  onLoad(options) {
+    this.taskType = options.taskType;
+  }
+}
+</script>

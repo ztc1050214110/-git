@@ -1,0 +1,103 @@
+<style lang="less">
+.UsLogo {
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.LOGOimg {
+  width: 250rpx;
+  height: 310rpx;
+}
+.issueList {
+  width: 80%;
+  height: 100rpx;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  line-height: 100rpx;
+  color: #000;
+  font-size: 34rpx;
+  background-color: #ffffff;
+}
+.issueList > span {
+  color: #dcdcdc;
+  line-height: 100rpx;
+  margin-right: 4%;
+  float: right;
+  font-size: 50rpx;
+}
+</style>
+
+<template>
+  <view class="container">
+    <view class="UsLogo">
+      <image
+        class="LOGOimg"
+        src="../../img/dfas234.png"
+      />
+    </view>
+    <i-cell-group>
+      <i-cell
+        title="功能介绍"
+        is-link
+        url="#"
+      >
+      </i-cell>
+      <i-cell
+        title="版本更新"
+        is-link
+        url="#"
+        @tap="cell"
+      >
+
+      </i-cell>
+    </i-cell-group>
+<i-toast id="toast" />
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// page
+  const { $Toast } = require('../../iview/base/index');
+
+export default class XXXXX extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '关于电力巡检',
+    usingComponents: {
+      'i-cell-group': '../../iview/cell-group/index',
+      'i-cell': '../../iview/cell/index',
+       "i-toast": "../../iview/toast/index"
+    }
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {
+   
+  };
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {
+    cell () {
+      console.log("点击了一次")
+      $Toast({
+            content: '已经是最新版了',
+            type: 'warning'
+        })
+    },
+  };
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

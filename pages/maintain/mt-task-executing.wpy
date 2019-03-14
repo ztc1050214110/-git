@@ -1,0 +1,223 @@
+<style lang="less">
+.mt100 {
+  margin-top: 100rpx;
+}
+
+.btn {
+  background-color: #00706a !important;
+  color: #ffffff !important;
+  margin-right: 90rpx !important;
+  margin-left: 90rpx !important;
+  height: 72rpx !important;
+  line-height: 72rpx !important;
+}
+
+.warning-btn {
+  background-color: #f7ab00 !important;
+  color: #ffffff !important;
+  margin-right: 90rpx !important;
+  margin-left: 90rpx !important;
+  height: 72rpx !important;
+  line-height: 72rpx !important;
+}
+
+.complete {
+  font-size: 32rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  line-height: 500rpx;
+  opacity: 0.7;
+  text-align: center;
+}
+</style>
+<template>
+  <view>
+    <i-steps current="{{step}}">
+      <i-step>
+        <view slot="title">
+          接单
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          到达
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          维修中
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          维修完成
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          送电
+        </view>
+      </i-step>
+    </i-steps>
+
+    <view class="caption-wrap">
+      <taskinfo :showMaintain.sync="showMaintain"></taskinfo>
+
+      <sginin
+        @onSginIn.user="onSginIn"
+        wx:if="{{step == 1}}"
+      ></sginin>
+      <success
+        wx:if="{{step == 3 }}"
+        :head1="head1"
+        :head2="head2"
+      ></success>
+
+      <view
+        class="complete"
+        wx:if="{{step == 4 }}"
+      >完成送电</view>
+
+      <!-- 占位 -->
+      <block wx:if="{{step != 1}}">
+        <view
+          style="height:80rpx;"
+          wx:if="{{step !=3}}"
+        />
+        <block wx:if="{{step ==3}}">
+          <i-button
+            bind:click="handleWarningClick"
+            i-class="warning-btn"
+            type="default"
+            loading=""
+          >送电异常，继续维修</i-button>
+          <view style="height:10rpx;"> </view>
+        </block>
+
+        <i-button
+          bind:click="handleClick"
+          i-class="btn"
+          type="default"
+          loading="{{loading}}"
+        >{{btnName}}</i-button>
+        <!-- 占位 -->
+        <view style="height:40rpx;" />
+      </block>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import taskinfo from './components/mt-task-info';
+import sginin from '../components/sgin-in';
+import success from '../components/success';
+
+let self;
+export default class MtTaskDetail extends wepy.page {
+  config = {
+    navigationBarTitleText: '维修',
+    usingComponents: {
+      'i-steps': '../../iview/steps/index',
+      'i-step': '../../iview/step/index',
+      'i-button': '../../iview/button/index',
+      'i-collapse': '../../iview/collapse-sd/index',
+      'i-collapse-item': '../../iview/collapse-item-sd/index',
+      'i-panel': '../../iview/panel/index',
+      'i-grid': '../../iview/grid/index',
+      'i-grid-item': '../../iview/grid-item/index',
+      'i-switch': '../../iview/switch/index',
+      'i-tabs': '../../iview/tabs/index',
+      'i-tab': '../../iview/tab/index'
+    }
+  };
+  components = {
+    taskinfo: taskinfo,
+    sginin: sginin,
+    success: success
+  };
+  mixins = [];
+  data = {
+    loading: false,
+    step: 0,
+    head2: '维修完成，请联系调度送电',
+    showMaintain: false
+  };
+  computed = {
+    btnName() {
+      switch (this.step) {
+        case 0:
+          return '接单';
+        case 1:
+          return '';
+        case 2:
+          return '完成维修';
+        case 3:
+          return '成功送电';
+        case 4:
+          return '确定';
+        default:
+          return '接单';
+      }
+    }
+  };
+  methods = {
+    onSginIn() {
+      this.step = 2;
+      self.showMaintain = true;
+      let collapse = self.$wxpage.selectComponent('#i-collapse');
+      if (collapse) {
+        collapse.expandAll();
+      }
+    },
+    collapseAll() {
+      let collapse = self.$wxpage.selectComponent('#i-collapse');
+      if (collapse) {
+        collapse.collapseAll();
+      }
+    },
+    handleClick() {
+      if (!self.loading) {
+        self.loading = true;
+        switch (self.step) {
+          case 0:
+            setTimeout(function() {
+              self.loading = false;
+              self.step = 1;
+              self.methods.collapseAll();
+              self.$apply();
+            }, 500);
+            break;
+          case 1:
+            break;
+          case 2:
+            setTimeout(function() {
+              self.loading = false;
+              self.methods.collapseAll();
+              self.step = 3;
+              self.$apply();
+            }, 500);
+            break;
+          case 3:
+            setTimeout(function() {
+              self.loading = false;
+              self.methods.collapseAll();
+              self.step = 4;
+              self.$apply();
+            }, 500);
+            break;
+          case 4:
+            wx.navigateBack();
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  };
+
+  onLoad() {
+    self = this;
+  }
+}
+</script>

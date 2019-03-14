@@ -1,0 +1,98 @@
+<style lang="less">
+.grid {
+  border: none !important;
+}
+
+.c-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.switch-css {
+  // width: 110rpx !important;
+}
+</style>
+<template>
+    <view>
+        <view
+            class="messageListLR"
+            style="border-bottom: 1px solid #fff;margin-top: 36rpx;"
+        >
+
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    项目
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <view
+            class="messageListLR2"
+            style="border-bottom: 1px solid #fff;"
+        >
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    配电箱
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <view
+            class="messageListLR2"
+            style="border-bottom: 1px solid #fff;"
+        >
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    外线
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <view
+            class="messageListLR2"
+            style="border-bottom: 1px solid #fff;"
+        >
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    变电站
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <view
+            class="messageListLR2"
+            style="  margin-bottom: 10rpx;"
+        >
+            <i-grid i-class="grid">
+                <i-grid-item i-class="c-grid-item">
+                    变电站
+                </i-grid-item>
+            </i-grid>
+        </view>
+        <!-- <view
+            class="Xjhei"
+            style="height:30rpx;"
+        ></view> -->
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class RContent extends wepy.component {
+  config = {};
+  components = {};
+  mixins = [];
+  data = {
+    switch1: false
+  };
+  props = {
+    showSwitch: Boolean
+  };
+  computed = {};
+  methods = {
+    onChange(event) {
+      const detail = event.detail;
+      this.switch1 = detail.value;
+    }
+  };
+}
+</script>

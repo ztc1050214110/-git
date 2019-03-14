@@ -1,0 +1,63 @@
+<style lang="less">
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 200rpx;
+  padding-bottom: 156rpx;
+}
+.su-img {
+  height: 206rpx;
+  width: 314rpx;
+}
+.head1 {
+  font-size: 35rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  line-height: 28rpx;
+  text-align: center;
+  margin-top: 57rpx;
+}
+
+.head2 {
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  line-height: 28rpx;
+  margin-top: 25rpx;
+  opacity: 0.7;
+  text-align: center;
+}
+</style>
+<template>
+    <view class="content">
+        <image
+            src="../../img/success.png"
+            class="su-img"
+            mode="scaleToFill"
+            lazy-load="false"
+        >
+        </image>
+        <view class="head1">{{head1}}</view>
+        <view class="head2">{{head2}}</view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class Success extends wepy.component {
+  config = {};
+  components = {};
+  props = {
+    head1: String,
+    head2: String
+  };
+  mixins = [];
+  data = {};
+  computed = {};
+  methods = {};
+}
+</script>

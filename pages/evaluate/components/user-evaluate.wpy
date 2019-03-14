@@ -1,0 +1,145 @@
+<style lang="less">
+.evaluateBox {
+  width: 100%;
+  height: 106rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+.useImg {
+  width: 58rpx;
+  height: 58rpx;
+  margin-left: 40rpx;
+  float: left;
+}
+.useTxt {
+  float: left;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+.star {
+  margin-left: 60rpx;
+  margin-top: -12rpx;
+}
+.favorable {
+  font-size: 24rpx;
+  color: #b1b1b4;
+  margin-left: 10rpx;
+}
+.little {
+  width: 355rpx;
+  height: 28rpx;
+  margin-left: 114rpx;
+  margin-top: 22rpx;
+  font-size: 20rpx;
+  color: #b5b5b5;
+}
+.little2 {
+  width: 554rpx;
+  height: 79rpx;
+  margin-left: 114rpx;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+.butts {
+  width: 390rpx;
+  height: 74rpx;
+  background-color: #01726b;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 74rpx;
+  color: #fff;
+  margin: auto;
+  margin-bottom: 30rpx;
+  font-size: 22.2rpx;
+  margin-top: 120rpx;
+}
+</style>
+
+<template>
+    <view class="container">
+        <view class="evaluateBox">
+            <image
+                src="../../../img/hdhg.png"
+                class="useImg"
+            />
+            <view class="useTxt">用户评价</view>
+            <view class="star">
+                <i-rate
+                    bind:change="onChange1"
+                    value="{{starIndex1}}"
+                    size="24"
+                >
+                </i-rate>
+            </view>
+            <view class="favorable">{{starIndex1}}小星星</view>
+        </view>
+        <view class="little">
+            <text>2019-03-06</text>
+            <text style="margin-left: 20rpx;">XXX工厂</text>
+            <text style="margin-left: 20rpx;">维修</text>
+        </view>
+        <view class="little2">
+            <text>这次服务非常满意，速度快，效率高，很快就帮我解决了问题感谢！</text>
+        </view>
+        <view class="little">
+            浏览 0 次
+        </view>
+        <view class="butts">确定</view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class UserEvaluate extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '用户评价'
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {
+    starIndex1: 5,
+    starIndex2: 0,
+    starIndex3: 0,
+    starIndex4: 4,
+    starIndex5: 5
+  };
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {
+    onChange1(e) {
+      const index = e.detail.index;
+      this.starIndex1 = index;
+    },
+    onChange2(e) {
+      const index = e.detail.index;
+      this.setData({
+        starIndex2: index
+      });
+    },
+    onChange3(e) {
+      const index = e.detail.index;
+      this.setData({
+        starIndex3: index
+      });
+    },
+    onChange5(e) {
+      const index = e.detail.index;
+      this.setData({
+        onChange5: index
+      });
+    }
+  };
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

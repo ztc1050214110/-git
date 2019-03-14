@@ -1,0 +1,27 @@
+<style lang="less">
+</style>
+<template>
+  <view>
+    {{info.result}}
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '扫码'
+  };
+  components = {};
+  mixins = [];
+  data = {
+    info: ''
+  };
+  computed = {};
+  methods = {};
+
+  onLoad(options) {
+    this.info = JSON.parse(decodeURIComponent(options.info));
+  }
+}
+</script>

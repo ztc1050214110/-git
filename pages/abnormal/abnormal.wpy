@@ -1,0 +1,149 @@
+<style lang="less">
+.issueList{
+    width: 98%;
+    height: 100rpx;
+    float: right;
+    border-bottom: 1px solid #ededed;
+    line-height: 100rpx;
+    color:#000;
+    font-size: 34rpx;
+    background-color: #ffffff;
+}
+.issueList2{
+    width: 98%;
+    height: 240rpx;
+    float: right;
+    border-bottom: 1px solid #ededed;
+    color:#000;
+   padding-top:20rpx;
+
+    background-color: #ffffff;
+    position: relative;
+}
+.issueList2>text{
+    position: absolute;
+     font-size: 26rpx;
+     bottom: 10rpx;
+     right: 20rpx;
+     color: #aeaeae;
+}
+.screenshot{
+    width: 100%;
+    height: 86rpx;
+    line-height: 86rpx;
+    box-sizing: border-box;
+    padding: 1%;
+    font-size: 34rpx;
+}
+.screenshot>span{
+     color: #aeaeae;
+     font-size: 26rpx;
+     margin-left: 54.8%;
+     line-height: 86rpx;
+}
+.addIMG{
+    width: 158rpx;
+    height: 158rpx;
+   margin-top:12%;
+margin-left:30rpx;
+
+}
+.hint{
+    width: 100%;
+    height: 76rpx;
+    background-color: #f2f2f2;
+    color: #848484;
+    border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 30rpx;
+    line-height: 76rpx;
+    box-sizing: border-box;
+    padding-left: 1%;
+    font-size: 26rpx;
+}.contact{
+    width: 100%;
+    height: 86rpx;
+     line-height: 86rpx;
+      border-bottom: 1px solid #e0e0e0;
+       box-sizing: border-box;
+    padding-left: 1%;
+    float: left;
+    font-size:34rpx;
+    background-color: #ffffff;
+
+}
+input{
+    margin-left: 10%;
+    margin-top:2%;
+
+    float: right;
+}
+   .butts{
+  width:600rpx;
+height:70rpx;
+background-color:#01726b;
+border-radius:10rpx;
+text-align:center;
+line-height:70rpx;
+color:#fff;
+margin:auto;
+margin-top:16%;
+font-size:32.2rpx;
+
+}
+page{
+    width: 100%;
+    height: 100%;
+    background-color: #f2f2f2;
+}
+.container2{
+    background-color: #ffffff;
+    height: 65%;
+}
+</style>
+
+<template>
+  <view class="container2">
+        <view class="issueList">无法打开小程序</view>
+        <view class="issueList2">
+            <textarea placeholder="请填写10个字以上的问题描述以便我们提供更好的帮助"
+            placeholder-style="color: #aeaeae;font-size: 30rpx;"/>
+            <text>0/200</text>
+        </view>
+        <view class="screenshot">相关截图 (选填) <span>0/4</span></view>
+        <image src="../../img/fewf.png" class="addIMG">
+        <view class="hint">输入有效联系方式以便开发者联系你 (选填)</view>
+        <view class="contact">联系方式 <input placeholder="邮箱/手机号"/></view>
+          <view class="butts">提交</view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+// import testMixin from '../mixins/test';
+// import top from '../components/work-top';
+// @connect({})
+// page
+export default class XXXXX extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '功能异常'
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {};
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

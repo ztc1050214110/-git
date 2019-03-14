@@ -1,0 +1,170 @@
+<style lang="less">
+.back {
+  width: 100%;
+  height: 520rpx;
+  background-color: #00706b;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wave {
+  width: 100%;
+  height: 104rpx;
+  position: absolute;
+  bottom: -1rpx;
+}
+.headImg {
+  width: 154rpx;
+  height: 154rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 100rpx;
+  overflow: hidden;
+}
+.menName {
+  color: #fff;
+  position: absolute;
+  top: 276rpx;
+}
+.positionTitle {
+  width: 92rpx;
+  height: 36rpx;
+  font-size: 24rpx;
+  color: #fff;
+  border-radius: 20rpx;
+  border: 1px solid #fff;
+  text-align: center;
+  line-height: 36rpx;
+  position: absolute;
+  top: 334rpx;
+}
+.messageList {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 100rpx;
+  position: relative;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 28rpx;
+  color: #000000;
+}
+.messagePos {
+  position: absolute;
+  right: 26rpx;
+  font-size: 28rpx;
+  color: #737373;
+}
+.samicon {
+  width: 28px;
+  height: 28px;
+  left: 10rpx;
+  top: 10rpx;
+}
+.Xjhei {
+  width: 100%;
+  height: 20rpx;
+  background-color: #efefef;
+}
+</style>
+<template>
+  <view>
+    <view class="back">
+      <open-data
+        type="userAvatarUrl"
+        class="headImg"
+        mode="cover"
+      >
+      </open-data>
+
+      <open-data
+        type="userNickName"
+        class="menName"
+      >
+      </open-data>
+      <view class="positionTitle">巡检员</view>
+      <image
+        src="../../img/llllllllb.png"
+        class="wave"
+      />
+    </view>
+
+    <i-cell-group>
+      <i-cell
+        title="手机号"
+        value="18408262610"
+      >
+        <view slot="icon">
+          <image
+            src="../../img/dfdf.png"
+            class="samicon"
+          />
+        </view>
+      </i-cell>
+      <i-cell
+        title="上次登录时间"
+        value="2019/03/06 16:23:00"
+      >
+        <view slot="icon">
+          <image
+            src="../../img/sgs.png"
+            class="samicon"
+          />
+        </view>
+
+      </i-cell>
+    </i-cell-group>
+
+    <view
+      class="Xjhei"
+      style="height:30rpx;"
+    ></view>
+
+    <i-cell-group>
+      <i-cell
+        title="关于电力巡检"
+        is-link
+        url="./about-us/about-us"
+      >
+        <view slot="icon">
+          <image
+            src="../../img/kjl.png"
+            class="samicon"
+          />
+        </view>
+      </i-cell>
+      <i-cell
+        title="意见建议"
+        is-link
+        url="./suggest/suggest"
+      >
+        <view slot="icon">
+          <image
+            src="../../img/dsh.png"
+            class="samicon"
+          />
+        </view>
+      </i-cell>
+    </i-cell-group>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.component {
+  config = {
+  
+  };
+  components = {};
+  mixins = [];
+  data = {};
+  computed = {};
+  methods = {};
+}
+</script>

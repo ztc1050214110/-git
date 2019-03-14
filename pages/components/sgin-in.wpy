@@ -1,0 +1,117 @@
+<style lang="less">
+.location-icon {
+  height: 33rpx;
+  width: 27rpx;
+}
+
+.location-title {
+  padding-left: 38rpx;
+  display: flex;
+  align-items: center;
+}
+
+.location-txt {
+  font-size: 25rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+  color: #000000;
+  padding-left: 10rpx;
+}
+.img {
+  height: 114rpx;
+  width: 114rpx;
+}
+
+.sgin-in-btn {
+  height: 221rpx;
+  width: 221rpx;
+}
+
+.btn-bar {
+  display: flex;
+  justify-content: center;
+  font-size: 25rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  position: relative;
+}
+
+.btn-txt {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
+<template>
+  <view>
+    <view class="location-title">
+      <image
+        src="../../img/asd22.png"
+        class="location-icon"
+        lazy-load="false"
+      />
+      <text class="location-txt ">{{location}}</text>
+    </view>
+    <map
+      id="map"
+      longitude="113.324520"
+      latitude="23.099994"
+      scale="14"
+      controls="{{controls}}"
+      bindcontroltap="controltap"
+      markers="{{markers}}"
+      bindmarkertap="markertap"
+      polyline="{{polyline}}"
+      bindregionchange="regionchange"
+      show-location
+      style="width: 100%; height: 500rpx;margin-top:20rpx"
+    ></map>
+
+    <addimage></addimage>
+    <view class="btn-bar">
+      <image
+        @tap="btnClick"
+        src="../../img/sgin_in.png"
+        mode="scaleToFill"
+        lazy-load="false"
+        class="sgin-in-btn"
+        hover-class="btn"
+      />
+      <view
+        class="btn-txt"
+        @tap="btnClick"
+      >
+        <view>到达</view>
+        <view>13:40</view>
+      </view>
+
+    </view>
+    <!-- 占位 -->
+    <view style="height:40rpx"></view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import addimage from './add-image';
+
+export default class SginIn extends wepy.component {
+  config = {};
+  components = {
+    addimage: addimage
+  };
+  mixins = [];
+  data = {
+    location: '锦城大道999号房地产办证中心'
+  };
+  computed = {};
+  methods = {
+    btnClick() {
+      this.$emit('onSginIn');
+    }
+  };
+}
+</script>

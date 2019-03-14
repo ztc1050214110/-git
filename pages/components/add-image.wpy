@@ -1,0 +1,93 @@
+<style lang="less">
+.grid {
+  border: none !important;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+}
+</style>
+<template>
+    <view>
+        <i-grid i-class="grid">
+            <i-grid-item i-class="grid-item">
+                <image
+                    src="../../img/add.png"
+                    mode="scaleToFill"
+                    lazy-load="false"
+                    class="img"
+                />
+            </i-grid-item>
+            <i-grid-item
+                i-class="grid-item"
+                wx:if="{{false}}"
+            >
+                <image
+                    src="../../img/add.png"
+                    mode="scaleToFill"
+                    lazy-load="false"
+                    class="img"
+                />
+            </i-grid-item>
+            <i-grid-item
+                i-class="grid-item"
+                wx:if="{{false}}"
+            >
+                <image
+                    src="../../img/add.png"
+                    mode="scaleToFill"
+                    lazy-load="false"
+                    class="img"
+                />
+            </i-grid-item>
+
+        </i-grid>
+
+        <i-grid
+            i-class="grid"
+            wx:if="{{false}}"
+        >
+            <i-grid-item i-class="grid-item">
+                <image
+                    src="../../img/add.png"
+                    mode="scaleToFill"
+                    lazy-load="false"
+                    class="img"
+                />
+            </i-grid-item>
+            <i-grid-item i-class="grid-item">
+                <image
+                    src="../../img/add.png"
+                    mode="scaleToFill"
+                    lazy-load="false"
+                    class="img"
+                />
+            </i-grid-item>
+            <i-grid-item i-class="grid-item">
+                <image
+                    src="../../img/add.png"
+                    mode="scaleToFill"
+                    lazy-load="false"
+                    class="img"
+                />
+
+            </i-grid-item>
+        </i-grid>
+
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class AddImage extends wepy.component {
+  config = {};
+  components = {};
+  mixins = [];
+  data = {};
+  computed = {};
+  methods = {};
+}
+</script>

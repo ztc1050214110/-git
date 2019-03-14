@@ -1,0 +1,151 @@
+<style lang="less">
+.stepBox{
+    width: 570rpx;
+    padding: 30rpx;
+    background-color: #b2e2df;
+    border: 1px solid #68aaa1;
+    border-radius: 10rpx;
+}
+.overstriking{
+    font-size: 26.4rpx;
+    font-weight: bold;
+    color: #000;
+}
+.overstrikingSma{
+    // margin-top: 20rpx;
+    font-size: 23.6rpx;
+    color: #000000;
+    margin-bottom: 20rpx;
+   
+}
+.butts{
+    width: 570rpx;
+    height: 74rpx;
+    background-color: #01726b;
+    border-radius: 10rpx;
+    text-align: center;
+    line-height: 74rpx;
+    color: #fff;
+    margin: auto;
+    margin-bottom: 30rpx;
+    	font-size: 22.2rpx;
+
+}
+</style>
+
+<template>
+<view class="container" style=" margin-top: 30rpx;">
+<i-steps current="{{verticalCurrent}}" direction="vertical">
+    <i-step>
+        <view slot="title">
+              巡检完成
+        </view>
+        <view slot="content">
+           <view class="stepBox">
+               <view class="overstriking"></view>
+               <view class="overstrikingSma">完成时间：2018/5/25   15:29:30</view>
+               </view>
+        </view>
+    </i-step>
+    <i-step>
+        <view slot="title">
+            正在巡检
+        </view>
+        <view slot="content">
+           <view class="stepBox">
+               <view class="overstriking"></view>
+               <view class="overstrikingSma">巡检开始时间：2018/5/25   15:29:39</view>
+               </view>
+        </view>
+    </i-step>
+    <i-step>
+        <view slot="title">
+            到达巡检地点
+        </view>
+        <view slot="content">
+           <view class="stepBox">
+               <view class="overstriking"></view>
+               <view class="overstrikingSma">到达时间：2018/5/25   15:29:39</view>
+               </view>
+        </view>
+    </i-step>
+    <i-step>
+        <view slot="title">
+            接单
+        </view>
+        <view slot="content">
+           <view class="stepBox">
+               <view class="overstriking"></view>
+               <view class="overstrikingSma">接单人：大长腿</view>
+               <view class="overstrikingSma">接单电话：1523216341332</view>
+               <view class="overstrikingSma">接单时间：2018/5/25   15:29:39</view>
+               </view>
+        </view>
+    </i-step>
+    <i-step>
+        <view slot="title">
+            派单
+        </view>
+        <view slot="content">
+           <view class="stepBox">
+               <view class="overstriking"></view>
+               <view class="overstrikingSma">接单人：大长腿</view>
+               <view class="overstrikingSma">接单电话：1523216341332</view>
+               </view>
+        </view>
+    </i-step>
+    <i-step>
+        <view slot="title">
+            生产工单
+        </view>
+        <view slot="content">
+           <view class="stepBox">
+               <view class="overstriking"></view>
+               <view class="overstrikingSma">工单生成类型：维修派单</view>
+               <view class="overstrikingSma">工单生成人：李大狗</view>
+               <view class="overstrikingSma">生成时间：2018/5/25  15:29:39</view>
+               </view>
+        </view>
+    </i-step>
+</i-steps>
+<view class="butts">确定</view>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+// import testMixin from '../mixins/test';
+// import top from '../components/work-top';
+// @connect({})
+// page
+export default class XXXXX extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '开发模板'
+  };
+  // 声明页面中将要使用到的组件
+  components = {
+  
+  };
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {
+ 
+  };
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {
+  
+  };
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {
+
+  }
+}
+</script>

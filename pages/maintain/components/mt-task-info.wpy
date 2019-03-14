@@ -1,0 +1,263 @@
+<style lang="less">
+.dynamic {
+  width: 100%;
+  height: 66rpx;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.afImg {
+  width: 30rpx;
+  height: 26rpx;
+  margin-left: 28rpx;
+}
+.dynamicTxt {
+  font-family: MicrosoftYaHei;
+  font-size: 26.5rpx;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+  margin-left: 20rpx;
+}
+.tommImg {
+  width: 32rpx;
+  height: 28rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 20rpx;
+}
+.messageList {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 50rpx;
+  position: relative;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 25rpx;
+}
+.messageListLR {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 50rpx;
+  position: relative;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 25rpx;
+  background-color: #01726b;
+  color: #fff;
+  text-align: center;
+}
+.messageListLR2 {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 50rpx;
+  position: relative;
+  border: 1px solid #dcdcdc;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 25rpx;
+  color: #000;
+  text-align: center;
+}
+.messageList2 {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 50rpx;
+  position: relative;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 25rpx;
+}
+.messagePos {
+  position: absolute;
+  right: 26rpx;
+}
+.Xjhei {
+  width: 100%;
+  height: 20rpx;
+  background-color: #efefef;
+}
+.linkman {
+  width: 100%;
+  height: 170rpx;
+  border-bottom: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
+}
+.linkmanLetf {
+  width: 49.9%;
+  height: 100%;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.linkmanCentre {
+  width: 0.2%;
+  height: 100%;
+  background-color: #dcdcdc;
+  float: left;
+}
+.linkmanLetfImg {
+  width: 66rpx;
+  height: 76rpx;
+  position: absolute;
+  top: 20rpx;
+}
+.linkmanLetfTxt {
+  width: 200rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: 20rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+.principal {
+  width: 100%;
+  margin-top: 28rpx;
+  margin-left: 52rpx;
+  font-family: MicrosoftYaHei;
+  font-size: 26.5rpx;
+  font-weight: bold;
+}
+.principalBox {
+  width: 100%;
+  height: 140rpx;
+  margin-top: 50rpx;
+}
+.principalBoxS {
+  height: 100%;
+  width: 82rpx;
+  margin-left: 68rpx;
+  float: left;
+}
+.principalBoxSImg {
+  width: 90rpx;
+  height: 90rpx;
+}
+.principalBoxSTxt {
+  text-align: center;
+  font-size: 23.5rpx;
+}
+.butt {
+  width: 392rpx;
+  height: 80rpx;
+  border-radius: 7rpx;
+  border: solid 2rpx #00706b;
+  margin: auto;
+  margin-top: 100rpx;
+  margin-bottom: 86rpx;
+  font-family: MicrosoftYaHei;
+  font-size: 26.5rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  text-align: center;
+  color: #00706b;
+}
+
+.block-title {
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+  height: 65rpx;
+  line-height: 65rpx;
+}
+
+.no-border {
+  border-top: none !important;
+}
+</style>
+
+<template>
+  <view class="container">
+
+    <i-collapse
+      name="{{name}}"
+      expansionAll="true"
+      id='i-collapse'
+    >
+      <i-collapse-item
+        title="基本信息"
+        name="name1"
+        i-class="no-border"
+        i-class-title="block-title"
+        showsub="false"
+        flag
+      >
+        <view slot="content">
+          <base />
+        </view>
+      </i-collapse-item>
+
+      <i-collapse-item
+        title="设备故障"
+        name="name2"
+        i-class="no-border"
+        i-class-title="block-title"
+        showsub="false"
+        flag
+      >
+        <view slot="content">
+          <mtcontent :showMaintain.sync="showMaintain"></mtcontent>
+        </view>
+      </i-collapse-item>
+    </i-collapse>
+
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import base from './task-base';
+import mtcontent from './mt-content';
+export default class SendTop extends wepy.component {
+  // 对应 app.json 文件
+  config = {
+    navigationBarTitleText: '开发模板'
+  };
+  props = {
+    showMaintain: Boolean
+  };
+  // 声明页面中将要使用到的组件
+  components = {
+    base: base,
+    mtcontent: mtcontent
+  };
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {
+    name: 'name1'
+  };
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {
+    // let c = this.selectComponent();
+    // console.log(this);
+  }
+}
+</script>

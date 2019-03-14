@@ -1,0 +1,405 @@
+<style lang="less">
+.title {
+  height: 71rpx;
+  background-color: #00706b;
+  width: 100%;
+  line-height: 71rpx;
+  color: white;
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add {
+  height: 33rpx;
+  width: 33rpx;
+}
+
+.add-device {
+  height: 66rpx;
+  width: 66rpx;
+  margin-top: 40rpx;
+}
+
+.add-txt {
+  color: white;
+  font-size: 24rpx;
+  font-family: MicrosoftYaHei;
+  padding-right: 20rpx;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.drawer-container {
+  width: 60vw;
+  height: 100vh;
+  background: #fff;
+  position: relative;
+}
+
+.drawer-btn-bar {
+  height: 100rpx;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.cancel-btn {
+  height: 100%;
+  width: 50%;
+  line-height: 100rpx;
+  background-color: #f7ab00;
+  color: #fff;
+  font-size: 25rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+  text-align: center;
+}
+
+.confirm-btn {
+  height: 100%;
+  width: 50%;
+  line-height: 100rpx;
+  background-color: #00706b;
+  color: #fff;
+  font-size: 25rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+  text-align: center;
+}
+
+.i-swipeout-demo-item {
+  border-bottom: #333 solid 1px;
+  padding: 0 !important;
+}
+.i-cell-padding {
+  padding: 5px 0px !important;
+  font-size: 14px;
+}
+.i-swipeout-demo-title {
+  height: 30px;
+  padding: 0 15px;
+  line-height: 30px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.i-swipeout-demo-des {
+  padding: 0 15px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #ff9900;
+}
+/*左中右结构*/
+.i-swipeout-image {
+  float: left;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 40px;
+  background: #2d8cf0;
+}
+.i-swipeout-des {
+  margin-left: 50px;
+}
+.i-swipeout-des-detail {
+  font-size: 12px;
+  word-break: break-all;
+  color: #80848f;
+}
+
+/*自定义按钮*/
+.i-swipeout-button-group {
+  height: 100%;
+  width: 100%;
+}
+.i-swipeout-button {
+  width: 70px;
+  float: left;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  background: #f7ab00;
+  color: #fff;
+  align-items: center;
+}
+
+.m-swipeout {
+ padding: 0 !important;
+}
+</style>
+<template>
+  <view>
+    <view class="title">
+      <text style="padding-left: 40rpx;">录入设备</text>
+
+      <view
+        class="flex"
+        style="padding-right: 40rpx;"
+        @tap="addObject"
+      >
+        <text class="add-txt">勘察对象</text>
+        <image
+          src="../../../img/add_device.png"
+          mode="scaleToFill"
+          lazy-load="false"
+          class="add"
+        />
+      </view>
+
+    </view>
+
+    <i-action-sheet
+      visible="{{ visible1 }}"
+      actions="{{ actions1 }}"
+      show-cancel
+      bind:cancel="handleCancel"
+      bind:click="handleClickItem"
+    />
+    <i-collapse
+      name="{{name}}"
+      expansionAll="true"
+      id='i-collapse'
+    >
+
+      <i-collapse-item
+        i-class="no-border"
+        i-class-title="block-title"
+        showsub="false"
+        flag
+        wx:for="{{objs}}"
+        title="{{item.name}}"
+        name="{{item.name}}"
+      >
+        <view slot="content">
+          <i-action-sheet
+            visible="{{ visible2 }}"
+            actions="{{ actions2 }}"
+            show-cancel
+            bind:cancel="handleCancel2"
+            bind:click="handleClickItem2"
+            mask-closable="{{ false }}"
+          >
+            <view
+              slot="header"
+              style="padding: 16px"
+            >
+              <view style="color: #444;font-size: 16px">确定吗？</view>
+              <text>删除后无法恢复哦</text>
+            </view>
+          </i-action-sheet>
+          <i-swipeout
+            wx:for="{{item.devices}}"
+            wx:for-item="device"
+            i-class="i-swipeout-demo-item"
+            i-content-class="m-swipeout"
+            operateWidth="{{120}}"
+            unclosable="{{true}}"
+            toggle="{{toggle}}"
+          >
+            <view slot="content">
+              <deviceinfo :item="device"></deviceinfo>
+            </view>
+            <view
+              slot="button"
+              class="i-swipeout-button-group"
+              style="background:#2db7f5;"
+            >
+              <view
+                class="i-swipeout-button"
+                style="width:120px"
+                bindtap="actionsTap"
+              >
+                删除
+              </view>
+            </view>
+          </i-swipeout>
+          <!-- <repeat
+            wx:for="{{item.devices}}"
+            key="i"
+            index="i"
+            item="device"
+          >
+            <deviceinfo :item="device"></deviceinfo>
+          </repeat> -->
+
+          <view
+            class="flex flex-center"
+            @tap="addDevice({{index}})"
+          >
+            <image
+              src="../../../img/add_device.png"
+              mode="scaleToFill"
+              lazy-load="false"
+              class="add-device"
+            />
+          </view>
+        </view>
+      </i-collapse-item>
+    </i-collapse>
+
+    <i-drawer
+      mode="right"
+      visible="{{showRight}}"
+      bind:close="toggleRight"
+    >
+      <view class="drawer-container">
+        <i-panel title="请选择设备">
+          <i-checkbox-group
+            color="#00706b"
+            current="{{checkedDevices}}"
+            bindchange="handleDeviceChange"
+          >
+            <i-checkbox
+              wx:for="{{devices}}"
+              position="{{position}}"
+              wx:key="{{item.id}}"
+              value="{{item.name}}"
+            >
+            </i-checkbox>
+          </i-checkbox-group>
+        </i-panel>
+        <view class="drawer-btn-bar">
+          <view
+            class="cancel-btn"
+            @tap="toggleRight"
+          >取消</view>
+          <view
+            class="confirm-btn"
+            @tap="confirm"
+          >确定</view>
+        </view>
+      </view>
+    </i-drawer>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import deviceinfo from './device-info';
+let self;
+let checkBoxmap = new Map();
+let deviceGroupIndex;
+
+export default class Reconn extends wepy.component {
+  config = {};
+  components = {
+    deviceinfo: deviceinfo
+  };
+  mixins = [];
+  data = {
+    devices: [
+      {
+        name: '开关',
+        id: 1
+      },
+      {
+        name: '变压器',
+        id: 2
+      },
+      {
+        name: '开关1',
+        id: 3
+      },
+      {
+        name: '开关2',
+        id: 4
+      },
+      {
+        name: '开关3',
+        id: 5
+      }
+    ],
+    showRight: false,
+    visible1: false,
+    actions1: [
+      {
+        name: '配电房'
+      },
+      {
+        name: '变电站'
+      },
+      {
+        name: '外线'
+      }
+    ],
+    objs: [],
+    checkedDevices: []
+  };
+  computed = {};
+  methods = {
+    confirm() {
+      if (self.checkedDevices && self.checkedDevices.length > 0) {
+        self.objs[deviceGroupIndex].devices = self.checkedDevices;
+      }
+      self.showRight = false;
+    },
+    handleDeviceChange(event) {
+      console.log(event);
+      self.checkedDevices = event.detail.value;
+
+      if (checkBoxmap.has(event.detail.value)) {
+        checkBoxmap.delete(event.detail.value);
+      } else {
+        checkBoxmap.set(event.detail.value, '');
+      }
+
+      let tmp = [];
+      checkBoxmap.forEach(function(value, key, map) {
+        tmp.push(key);
+      });
+      self.checkedDevices = tmp;
+    },
+    toggleRight() {
+      self.showRight = false;
+    },
+    addDevice(index) {
+      console.log(index);
+      self.showRight = true;
+      deviceGroupIndex = index;
+    },
+    addObject() {
+      self.visible1 = true;
+    },
+    handleClickItem({ detail }) {
+      switch (parseInt(detail.index)) {
+        case 0:
+          self.objs.push({
+            name: '配电房'
+          });
+          break;
+        case 1:
+          self.objs.push({
+            name: '变电站'
+          });
+          break;
+        case 2:
+          self.objs.push({
+            name: '外线'
+          });
+          break;
+        default:
+          break;
+      }
+      self.visible1 = false;
+    },
+    handleCancel(e) {
+      self.visible1 = false;
+    }
+  };
+
+  onLoad() {
+    self = this;
+  }
+}
+</script>

@@ -1,0 +1,174 @@
+<style lang="less">
+.dynamic {
+  width: 100%;
+  height: 66rpx;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.afImg {
+  width: 30rpx;
+  height: 26rpx;
+  margin-left: 28rpx;
+}
+.dynamicTxt {
+  font-family: MicrosoftYaHei;
+  font-size: 26.5rpx;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+  margin-left: 20rpx;
+}
+.tommImg {
+  width: 32rpx;
+  height: 28rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 20rpx;
+}
+.messageList {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 50rpx;
+  position: relative;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 25rpx;
+}
+.messageListLR {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 50rpx;
+  position: relative;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 25rpx;
+  background-color: #01726b;
+  color: #fff;
+  text-align: center;
+}
+.messageListLR2 {
+  width: 96%;
+  height: 76rpx;
+  line-height: 76rpx;
+  box-sizing: border-box;
+  padding-left: 50rpx;
+  position: relative;
+  border: 1px solid #dcdcdc;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: MicrosoftYaHei;
+  font-size: 25rpx;
+  color: #000;
+  text-align: center;
+}
+.messagePos {
+  position: absolute;
+  left: 210rpx;
+}
+.malfunctionImg {
+  width: 570rpx;
+  height: 120rpx;
+  position: absolute;
+  right: 0;
+  top: 46%;
+  display: flex;
+  justify-content: space-between;
+}
+.malfunctionImg > image {
+  height: 100%;
+  width: 30%;
+}
+.butts4 {
+  width: 570rpx;
+  height: 74rpx;
+  background-color: #01726b;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 74rpx;
+  color: #fff;
+  margin: auto;
+  margin-bottom: 30rpx;
+  font-size: 22.2rpx;
+  margin-top: 120rpx;
+  margin-bottom: 220rpx;
+}
+</style>
+
+<template>
+    <view class="container">
+        维修中
+        <view class="dynamic">
+            <image
+                src="../../../img/af.png"
+                class="afImg"
+            />
+            <view class="dynamicTxt">维修</view>
+            <image
+                src="../../../img/ssss.png"
+                class="tommImg"
+            />
+        </view>
+        <view class="messageList">
+            维修设备:
+            <text class="messagePos">变压器</text>
+        </view>
+        <view class="messageList">
+            维修备注:
+            <text class="messagePos">XXXXXXXXX</text>
+        </view>
+        <view
+            class="messageList"
+            style="padding-left:50rpx;height:184rpx;border-bottom: 1px solid #ffffff;"
+        >
+            图　　片：
+            <view class="malfunctionImg">
+                <image src="http://img3.imgtn.bdimg.com/it/u=2611866339,2871268630&fm=200&gp=0.jpg" />
+                <image src="http://img4.imgtn.bdimg.com/it/u=3631451944,3480890746&fm=26&gp=0.jpg" />
+                <image src="http://img5.imgtn.bdimg.com/it/u=2769956578,1701348593&fm=26&gp=0.jpg" />
+            </view>
+        </view>
+        <view class="butts4">完成维修</view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+// import testMixin from '../mixins/test';
+// import top from '../components/work-top';
+// @connect({})
+// page
+export default class XXXXX extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '维修中'
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {};
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

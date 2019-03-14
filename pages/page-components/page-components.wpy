@@ -1,0 +1,49 @@
+<style lang="less">
+</style>
+
+<template>
+  <view class="container">
+    <UserEvaluate></UserEvaluate>
+    <MaintainCentre></MaintainCentre>
+    <ArriveMap></ArriveMap>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+import ArriveMap from './components/Arrive-map';
+import MaintainCentre from './components/Maintain-centre';
+import UserEvaluate from '../evaluate/components/user-evaluate';
+// @connect({})
+// page
+export default class page extends wepy.page {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '页面需要用到的组件',
+    usingComponents: {
+      'i-switch': '../../iview/switch/index',
+      'i-rate': '../../iview/rate/index'
+    }
+  };
+  // 声明页面中将要使用到的组件
+  components = {
+    ArriveMap: ArriveMap,
+    MaintainCentre: MaintainCentre,
+    UserEvaluate: UserEvaluate
+  };
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {};
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

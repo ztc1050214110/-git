@@ -1,0 +1,117 @@
+<style lang="less">
+.issue{
+    width: 100%;
+    height: 80rpx;
+    background-color: #f1f1f4;
+    box-sizing: border-box;
+    padding-top: 30rpx;
+    padding-left: 20rpx;
+    color: #6a6a6d;
+    font-size: 28rpx;
+}
+.issueList{
+    width: 98%;
+    height: 100rpx;
+    float: right;
+    border-bottom: 1px solid #ededed;
+    line-height: 100rpx;
+    color:#000;
+    font-size: 34rpx;
+    background-color: #ffffff;
+}
+.issueList>span{
+    color: #dcdcdc;
+    line-height: 100rpx;
+    margin-right: 4%;
+    float: right;
+    font-size:50rpx;
+
+}
+page{
+    width: 100%;
+    height: 100%;
+}
+.container2{
+    // width: 100%;
+    // height: 100%;
+}
+.parcel{
+    width: 100%;
+    height: 77.4%;
+    background-color: #ffffff;
+}
+.filler{
+  width: 100%;
+  height: 100rpx;
+  background-color: red;
+}
+navigator{
+  height: 100rpx;
+  width: 100%;
+}
+</style>
+
+<template>
+  <view class="container2">
+    <view class="issue">热点问题</view>
+    <view class="parcel">
+       <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">无法打开小程序<span>></span></view>
+    </navigator>
+     <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">小程序闪退<span>></span></view>
+    </navigator>
+     <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">卡顿<span>></span></view>
+    </navigator>
+     <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">黑屏白屏<span>></span></view>
+    </navigator>
+     <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">死机<span>></span></view>
+    </navigator>
+     <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">界面错位<span>></span></view>
+    </navigator>
+     <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">界面加载慢<span>></span></view>
+    </navigator>
+     <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">其他异常<span>></span></view>
+    </navigator>
+     <navigator url="../abnormal/abnormal" hover-class="none">
+    <view class="issueList">意见和建议<span>></span></view>
+    </navigator>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+// import testMixin from '../mixins/test';
+// import top from '../components/work-top';
+// @connect({})
+// page
+export default class XXXXX extends wepy.page {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '意见和建议'
+  };
+  // 声明页面中将要使用到的组件
+  components = {};
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {};
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {}
+}
+</script>

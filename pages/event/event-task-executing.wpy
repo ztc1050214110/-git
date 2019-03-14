@@ -1,0 +1,108 @@
+<style lang="less">
+
+</style>
+<template>
+  <view>
+    <i-steps current="{{current}}">
+      <i-step>
+        <view slot="title">
+          接单
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          到达
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          巡检
+        </view>
+      </i-step>
+      <i-step>
+        <view slot="title">
+          完成
+        </view>
+      </i-step>
+    </i-steps>
+
+    <view class="caption-wrap">
+      <i-collapse name="{{name}}">
+        <i-collapse-item
+          title="基本信息"
+          name="基本信息"
+        >
+          <view slot="content">
+            这里显示基本信息
+          </view>
+        </i-collapse-item>
+        <i-collapse-item
+          title="巡检内容"
+          name="巡检内容"
+        >
+          <view
+            slot="content"
+            i-class-content="green-text"
+          >
+            这里显示巡检内容
+          </view>
+        </i-collapse-item>
+        <i-collapse-item
+          title="其他"
+          name="name3"
+        >
+          <view slot="content">
+            其他内容
+          </view>
+        </i-collapse-item>
+      </i-collapse>
+
+      <!-- 占位 -->
+      <view style="height:100rpx" />
+      <i-button
+        bind:click="handleClick"
+        type="primary"
+        loading="{{loading}}"
+      >接单</i-button>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+let self;
+export default class EventTaskDetail extends wepy.page {
+  config = {
+    navigationBarTitleText: '巡检',
+    usingComponents: {
+      'i-steps': '../../iview/steps/index',
+      'i-step': '../../iview/step/index',
+      'i-collapse': '../../iview/collapse/index',
+      'i-collapse-item': '../../iview/collapse-item/index',
+      'i-button': '../../iview/button/index'
+    }
+  };
+  components = {};
+  mixins = [];
+  data = {
+    current: 2,
+    loading: false
+  };
+  computed = {};
+  methods = {
+    handleClick() {
+      if (!self.loading) {
+        self.loading = true;
+        setTimeout(function() {
+          self.loading = false;
+          self.$apply();
+        }, 3000);
+      }
+    }
+  };
+
+  onLoad() {
+    self = this;
+  }
+}
+</script>

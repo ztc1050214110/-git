@@ -1,0 +1,65 @@
+
+<style lang="less">
+.nv-bar {
+  width: 100%;
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+  justify-content: start;
+  position: fixed;
+  background-color: #ffffff;
+  top: 0;
+  z-index: 1000;
+}
+</style>
+
+<template>
+    <view
+        class="nv-bar"
+        style="padding-top:{{statusBarHeight}}px;justify-content:{{justifyContent}};background-color: {{backgroundColor}}"
+    >
+        <i-icon
+            style="paddling-left:20rpx"
+            type="return"
+            size="28"
+            color="#80848f"
+            wx:if="{{showBack}}"
+        />
+        <text style="padding-left:{{showBack ? '40rpx':'20rpx'}}">{{title}}</text>
+        <view />
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+let app;
+let self;
+export default class NavBar extends wepy.component {
+  config = {
+    usingComponents: {
+      'i-icon': '../../iview/icon/index'
+    }
+  };
+
+  props = {
+    // 静态传值
+    title: {
+      type: String,
+      default: ''
+    },
+    showBack: Boolean,
+    justifyContent: String,
+    backgroundColor: String
+  };
+  data = {
+    statusBarHeight: wx.getSystemInfoSync()['statusBarHeight']
+  };
+  methods = {};
+  components = {};
+  onLoad() {
+    self = this;
+    app = self.$parent.$parent;
+    // self.$data.statusBarHeight = app.globalData.statusBarHeight;
+  }
+}
+</script>

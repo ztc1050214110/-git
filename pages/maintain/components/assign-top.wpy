@@ -1,0 +1,256 @@
+<style lang="less">
+    .dynamic {
+        width: 100%;
+        height: 66rpx;
+        border-bottom: 1px solid #eeeeee;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .afImg {
+        width: 30rpx;
+        height: 26rpx;
+        margin-left: 28rpx;
+    }
+    .dynamicTxt {
+        font-family: MicrosoftYaHei;
+        font-size: 26.5rpx;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 1);
+        margin-left: 20rpx;
+    }
+    .tommImg {
+        width: 32rpx;
+        height: 28rpx;
+        position: absolute;
+        right: 40rpx;
+        top: 20rpx;
+    }
+    .messageList {
+        width: 96%;
+        height: 76rpx;
+        line-height: 76rpx;
+        box-sizing: border-box;
+        padding-left: 50rpx;
+        position: relative;
+        border-bottom: 1px solid #dcdcdc;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: MicrosoftYaHei;
+        font-size: 25rpx;
+    }
+    .messageListLR {
+        width: 96%;
+        height: 76rpx;
+        line-height: 76rpx;
+        box-sizing: border-box;
+        padding-left: 50rpx;
+        position: relative;
+        border-bottom: 1px solid #dcdcdc;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: MicrosoftYaHei;
+        font-size: 25rpx;
+    background-color: #01726b;
+    color: #fff;
+    text-align: center;
+    }
+    .messageListLR2 {
+        width: 96%;
+        height: 76rpx;
+        line-height: 76rpx;
+        box-sizing: border-box;
+        padding-left: 50rpx;
+        position: relative;
+        border: 1px solid #dcdcdc;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: MicrosoftYaHei;
+        font-size: 25rpx;
+    color: #000;
+    text-align: center;
+    }
+    .messageList2 {
+        width: 96%;
+        height: 76rpx;
+        line-height: 76rpx;
+        box-sizing: border-box;
+        padding-left: 50rpx;
+        position: relative;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: MicrosoftYaHei;
+        font-size: 25rpx;
+    }
+    .messagePos {
+        position: absolute;
+        right: 26rpx;
+    }
+    .Xjhei {
+        width: 100%;
+        height: 20rpx;
+        background-color: #efefef;
+    }
+    .linkman {
+        width: 100%;
+        height: 170rpx;
+        border-bottom: 1px solid #dcdcdc;
+        border-top: 1px solid #dcdcdc;
+    }
+    .linkmanLetf {
+        width: 49.9%;
+        height: 100%;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .linkmanCentre {
+        width: 0.2%;
+        height: 100%;
+        background-color: #dcdcdc;
+        float: left;
+    }
+    .linkmanLetfImg {
+        width: 66rpx;
+        height: 76rpx;
+        position: absolute;
+        top: 20rpx;
+    }
+    .linkmanLetfTxt {
+        width: 200rpx;
+        height: 40rpx;
+        position: absolute;
+        bottom: 20rpx;
+        font-size: 26rpx;
+        text-align: center;
+    }
+    .principal{
+        width: 100%;
+        margin-top: 28rpx;
+        margin-left: 52rpx;
+        font-family: MicrosoftYaHei;
+	font-size: 26.5rpx;
+	font-weight: bold;
+    }
+    .principalBox{
+        width: 100%;
+        height: 140rpx;
+        margin-top: 50rpx;
+    }.principalBoxS{
+        height: 100%;
+        width: 82rpx;
+          margin-left: 68rpx;
+          float: left;
+    }.principalBoxSImg{
+       width: 82rpx;
+	height: 86rpx;
+    }.principalBoxSTxt{
+        text-align: center;
+        font-size: 23.5rpx;
+      
+    }.butt{
+      width: 392rpx;
+	height: 80rpx;
+	border-radius: 7rpx;
+    border: solid 2rpx #00706b;
+    margin: auto;
+    margin-top: 100rpx;
+    margin-bottom: 86rpx;
+    font-family: MicrosoftYaHei;
+	font-size: 26.5rpx;
+    font-weight: bold;
+    line-height: 80rpx;
+    text-align: center;
+    color: #00706b;
+    }
+</style>
+
+<template>
+    <view class="container">
+        <view class="dynamic">
+            <image src="../../../img/af.png" class="afImg" />
+            <view class="dynamicTxt">基本信息</view>
+            <image src="../../../img/ssss.png" class="tommImg" />
+        </view>
+        <view class="messageList">
+            巡检类型
+            <text class="messagePos">临时巡检/定期巡检</text>
+        </view>
+        <view class="messageList">
+            巡检对象
+            <text class="messagePos">×××用户</text>
+        </view>
+        <view class="messageList">
+            巡检地址
+            <text class="messagePos">×××市×××区</text>
+        </view>
+        <view class="messageList2">
+            巡检事件
+            <text class="messagePos">2019/2/14</text>
+        </view>
+        <!-- <view class="Xjhei"></view> -->
+        <view class="linkman">
+            <view class="linkmanLetf">
+                <image src="../../../img/lxr.png" class="linkmanLetfImg" />
+                <view class="linkmanLetfTxt">
+                    <span style="color:#aaaaaa">联系人 :</span> 张三丰
+                </view>
+            </view>
+            <view class="linkmanCentre"></view>
+            <view class="linkmanLetf">
+                <image src="../../../img/phone.png" class="linkmanLetfImg" />
+                <view class="linkmanLetfTxt" style="width: 360rpx;">
+                    <span style="color:#aaaaaa">联系电话 :</span> 15231214582
+                </view>
+            </view>
+        </view>
+        <!-- <view class="Xjhei" style="height:40rpx;"></view> -->
+
+
+    
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+// import testMixin from '../mixins/test';
+
+// @connect({})
+// page
+export default class XXXXX extends wepy.component {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '开发模板'
+  };
+  // 声明页面中将要使用到的组件
+  components = {
+ 
+  };
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {
+ 
+  };
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {
+  
+  };
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {
+
+  }
+}
+</script>

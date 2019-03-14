@@ -1,0 +1,53 @@
+<style lang="less">
+</style>
+
+<template>
+  <view class="container">
+    <top></top>
+    <!-- <centre></centre> -->
+    <bott></bott>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+// 状态管理
+import { connect } from 'wepy-redux';
+// import testMixin from '../mixins/test';
+import top from './components/ti-task-info';
+import bott from '../components/assign-bott';
+// @connect({})
+export default class SendOrders extends wepy.page {
+  //对应 app.json 文件
+  config = {
+    navigationBarTitleText: '巡检派单',
+    usingComponents: {
+      'i-button': '../../iview/button/index',
+      'i-collapse': '../../iview/collapse-sd/index',
+      'i-collapse-item': '../../iview/collapse-item-sd/index',
+      'i-grid': '../../iview/grid/index',
+      'i-grid-item': '../../iview/grid-item/index'
+    }
+  };
+  // 声明页面中将要使用到的组件
+  components = {
+    top: top,
+    bott: bott
+  };
+  // 声明页面所引用的Mixin实例
+  // mixins = [testMixin];
+  // 数据
+  data = {};
+  // 计算数据
+  computed = {};
+  // 方法
+  methods = {};
+  // 声明组件之间的事件处理函数
+  events = {};
+  //  生命周期
+  onLoad() {
+    // let c = this.selectComponent();
+    console.log(this);
+  }
+}
+</script>
